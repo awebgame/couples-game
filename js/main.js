@@ -14,8 +14,9 @@ var a_option = 0;
 var b_option = 0;
 
 var guid = "";
+var token = "";
 
-var api_url = "https://www.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=20";
+var api_url = "https://oauth.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=20";
 
 f_tags = ["dildo", "blowjob", "finger", "footjob", "ass"];
 m_tags = ["masturbate", "lick+pussy", "lick+boobs", "lick+ass"];
@@ -53,11 +54,11 @@ function start_game() {
       dataType: 'json',
       async: false,
       headers: {
-        "Authorization": "Basic " + btoa("9pOsP_Q4bmSSIA:")
+        "Authorization": "Basic " + btoa("9pOsP_Q4bmSSIA:i3pQtUJhQnVz6zvz7-4jCesikvQ")
       },
       data: {grant_type: 'https://oauth.reddit.com/grants/installed_client', device_id: guid},
       success: function(data){
-        console.log(data);
+        token = data['access_token'];
       }
     });
 
@@ -127,9 +128,6 @@ function update_score(player) {
 
   load_next();
   score_color();
-
-
-
 }
 
 function load_gif() {
@@ -150,6 +148,19 @@ function load_gif() {
     console.log(data);
     console.log(data["data"]["children"]);
   });
+
+    $.ajax({
+      type: "GET",
+      url: url,
+      dataType: 'json',
+      async: false,
+      headers: {
+        "Authorization": "Bearer " + token
+      },
+      success: function(data){
+        console.log(data);
+      }
+    });
 
 }
 
