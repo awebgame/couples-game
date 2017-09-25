@@ -97,6 +97,26 @@ function update_score(player) {
 
   load_next();
   score_color();
+
+}
+
+function loadJSON(path, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Here the callback gets implemented
+                object = JSON.parse(xhr.responseText);
+                callback();
+            } else {
+
+            }
+        }
+    };
+
+    xhr.open("GET", path, true);
+    xhr.send();
+    return xhr.onreadystatechange();
 }
 
 function load_gif() {
@@ -106,16 +126,15 @@ function load_gif() {
   }
   var url = api_url + '&q=r/NSFW_GIF+blowjob+teen+couple+gif';
 
-  $.ajax({
-    url: url,
-    success: function(data) {
-    data = $.parseJSON(data);
-      console.log(data);
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.log("Ajax error");
-    }
-  });
+
+
+
+loadJSON(url, function printJSONObject(){
+          console.log(object);
+    });
+
+// this will not work unless you get the response
+console.log(object);
 }
 
 function end_game() {
