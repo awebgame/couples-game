@@ -95,6 +95,7 @@ function load_gif() {
     success: function(data) {
     data = $.parseJSON(data);
     console.log(data);
+    console.log("ok");
   },
   error: function(jqXHR, textStatus, errorThrown) {
     console.log("Ajax error");
