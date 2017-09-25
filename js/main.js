@@ -13,7 +13,7 @@ var t_option = 0;
 var a_option = 0;
 var b_option = 0;
 
-var api_url = "https://api.qwant.com/api/search/images?count=10&offset=1&safesearch=0&size=medium";
+var api_url = "http://api.ababeen.com/api/images.php?count=20";
 
 function start_game() {
   f_score = 0;
@@ -88,10 +88,18 @@ function update_score(player) {
 }
 
 function load_gif() {
-  var url = api_url + '&q=teen+masturbate';
-$.getJSON(url, function(data) {
-   console.log(data);
-});
+  var url = api_url + '&q=r/NSFW_GIF+blowjob+teen+couple+gif';
+
+  $.ajax({
+    url: url,
+    success: function(data) {
+    data = $.parseJSON(data);
+    console.log(data);
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.log("Ajax error");
+  }
+  });
 }
 
 function end_game() {
@@ -108,3 +116,4 @@ function end_game() {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
