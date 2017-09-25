@@ -15,6 +15,13 @@ var b_option = 0;
 
 var api_url = "http://api.ababeen.com/api/images.php?count=20";
 
+f_tags = ["dildo", "blowjob", "finger", "footjob", "ass"];
+m_tags = ["masturbate", "lick+pussy", "lick+boobs", "lick+ass"];
+
+a_tags = ["anal"];
+
+couple_tags = ["fuck+pussy", "69"];
+
 function start_game() {
   f_score = 0;
   m_score = 0;
@@ -30,6 +37,10 @@ function start_game() {
     t_option = document.getElementById('t_option').checked;
     a_option = document.getElementById('a_option').checked;
     b_option = document.getElementById('b_option').checked;
+
+    if(a_option) {
+      couple_tags.push(a_tags);
+    }
 
     document.getElementById('game_start').style.display = 'none';
 
@@ -65,7 +76,8 @@ function load_next() {
   }
 
   current_player = !current_player;
-   if(current_player == 0) {
+  
+  if(current_player == 0) {
     document.getElementById('player_name').innerHTML = f_name;
    } else {
     document.getElementById('player_name').innerHTML = m_name;
@@ -88,18 +100,21 @@ function update_score(player) {
 }
 
 function load_gif() {
+
+  if(current_player == 0) {
+
+  }
   var url = api_url + '&q=r/NSFW_GIF+blowjob+teen+couple+gif';
 
   $.ajax({
     url: url,
     success: function(data) {
     data = $.parseJSON(data);
-    console.log(data);
-    console.log("ok");
-  },
-  error: function(jqXHR, textStatus, errorThrown) {
-    console.log("Ajax error");
-  }
+      console.log(data);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Ajax error");
+    }
   });
 }
 
