@@ -162,7 +162,8 @@ function load_gif() {
       }
     });
 
-    
+    console.log("ok");
+
 
 }
 
