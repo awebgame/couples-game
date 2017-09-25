@@ -13,6 +13,8 @@ var t_option = 0;
 var a_option = 0;
 var b_option = 0;
 
+var guid = "";
+
 var api_url = "https://www.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=20";
 
 f_tags = ["dildo", "blowjob", "finger", "footjob", "ass"];
@@ -22,11 +24,19 @@ a_tags = ["anal"];
 
 couple_tags = ["fuck+pussy", "69"];
 
+function guidGenerator() {
+  var S4 = function() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  };
+  return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4());
+}
+
 function start_game() {
   f_score = 0;
   m_score = 0;
   counter = 1;
   current_player = 1;
+  guid = "";
 
   f_name = capitalizeFirstLetter(document.getElementById('female_input').value);
   m_name = capitalizeFirstLetter(document.getElementById('male_input').value);
@@ -34,6 +44,23 @@ function start_game() {
   if(f_name === "" || m_name === "") {
     alert("Please enter the player names");
   } else {
+
+    guid = guidGenerator();
+
+    $.ajax({
+      type: "POST",
+      url: "https://www.reddit.com/api/v1/access_token",
+      dataType: 'json',
+      async: false,
+      headers: {
+        "Authorization": "Basic " + btoa("9pOsP_Q4bmSSIA" + ":" + "i3pQtUJhQnVz6zvz7-4jCesikvQ")
+      },
+      data: {grant_type: 'https://oauth.reddit.com/grants/installed_client', device_id: guid},
+      success: function(data){
+        console.log(data);
+      }
+    });
+
     t_option = document.getElementById('t_option').checked;
     a_option = document.getElementById('a_option').checked;
     b_option = document.getElementById('b_option').checked;
@@ -113,13 +140,13 @@ function load_gif() {
     current_tag = f_tags[f_random]; 
     url = api_url + "&q=" + current_tag;
   } else {
-    
+
     m_random = Math.floor((Math.random() * m_tags.length));
     current_tag = m_tags[m_random];
     url = api_url + "&q=" + current_tag;
   }
 
-  $.getJSON(url, function (data) {
+  $.get(url, function (data) {
     console.log(data);
     console.log(data["data"]["children"]);
   });
