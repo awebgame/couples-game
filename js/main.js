@@ -13,9 +13,10 @@ var t_option = 0;
 var a_option = 0;
 var b_option = 0;
 
+var object;
 
 
-var api_url = "https://api.ababeen.com/api/images.php?count=20";
+var api_url = "http://api.ababeen.com/api/images.php?count=20";
 
 f_tags = ["dildo", "blowjob", "finger", "footjob", "ass"];
 m_tags = ["masturbate", "lick+pussy", "lick+boobs", "lick+ass"];
