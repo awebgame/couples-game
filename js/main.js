@@ -109,18 +109,18 @@ function load_gif() {
   current_tag = "";  
 
   if(current_player == 0) {
-    f_random = Math.floor((Math.random() * f_tags.length) + 1);
+    f_random = Math.floor((Math.random() * f_tags.length));
     current_tag = f_tags[f_random]; 
     url = api_url + "&q=" + current_tag;
   } else {
-    m_random = Math.floor((Math.random() * m_tags.length) + 1);
-    current_tag = m_random;
+    m_random = Math.floor((Math.random() * m_tags.length));
+    current_tag = m_tags[m_random];
     url = api_url + "&q=" + current_tag;
   }
 
   $.getJSON(url, function (data) {
     console.log(data);
-    console.log(data[0]["data"]["children"]);
+    console.log(data["data"]["children"]);
   });
 
 }
