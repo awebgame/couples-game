@@ -162,6 +162,8 @@ function load_gif() {
       }
     });
 
+    
+
 }
 
 function end_game() {
