@@ -113,6 +113,7 @@ function load_gif() {
     current_tag = f_tags[f_random]; 
     url = api_url + "&q=" + current_tag;
   } else {
+    
     m_random = Math.floor((Math.random() * m_tags.length));
     current_tag = m_tags[m_random];
     url = api_url + "&q=" + current_tag;
