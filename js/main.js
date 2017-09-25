@@ -13,12 +13,7 @@ var t_option = 0;
 var a_option = 0;
 var b_option = 0;
 
-var object;
-
-
-
-
-var api_url = "http://api.ababeen.com/api/images.php?count=20";
+var api_url = "https://www.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=20";
 
 f_tags = ["dildo", "blowjob", "finger", "footjob", "ass"];
 m_tags = ["masturbate", "lick+pussy", "lick+boobs", "lick+ass"];
@@ -46,6 +41,9 @@ function start_game() {
     if(a_option) {
       couple_tags.push(a_tags);
     }
+
+    f_tags.push(couple_tags);
+    m_tags.push(couple_tags);
 
     document.getElementById('game_start').style.display = 'none';
 
@@ -103,43 +101,28 @@ function update_score(player) {
   load_next();
   score_color();
 
-}
 
-function loadJSON(path, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // Here the callback gets implemented
-                object = JSON.parse(xhr.responseText);
-                callback();
-            } else {
 
-            }
-        }
-    };
-
-    xhr.open("GET", path, true);
-    xhr.send();
-    return xhr.onreadystatechange();
 }
 
 function load_gif() {
+  current_tag = "";  
 
   if(current_player == 0) {
-
+    f_random = Math.floor((Math.random() * f_tags.length) + 1);
+    current_tag = f_tags[f_random]; 
+    url = api_url + "&q=" + current_tag;
+  } else {
+    m_random = Math.floor((Math.random() * m_tags.length) + 1);
+    current_tag = m_random;
+    url = api_url + "&q=" + current_tag;
   }
-  var url = api_url + '&q=r/NSFW_GIF+blowjob+teen+couple+gif';
 
+  $.getJSON(url, function (data) {
+    console.log(data);
+    console.log(data[0]["data"]["children"]);
+  });
 
-
-
-loadJSON(url, function printJSONObject(){
-          console.log(object);
-    });
-
-// this will not work unless you get the response
-console.log(object);
 }
 
 function end_game() {
@@ -156,4 +139,3 @@ function end_game() {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
