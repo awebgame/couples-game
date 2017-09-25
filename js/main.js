@@ -53,7 +53,7 @@ function start_game() {
       dataType: 'json',
       async: false,
       headers: {
-        "Authorization": "Basic " + btoa("9pOsP_Q4bmSSIA" + ":" + "i3pQtUJhQnVz6zvz7-4jCesikvQ")
+        "Authorization": "Basic 9pOsP_Q4bmSSIA"
       },
       data: {grant_type: 'https://oauth.reddit.com/grants/installed_client', device_id: guid},
       success: function(data){
