@@ -1,3 +1,25 @@
 body {
   background: #0f0f0f;
 }
+
+.vertical_align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#game_options {
+  padding-top: .4rem;
+}
+
+#game_container {
+  display: none;
+}
+
+#current_score {
+  padding-top: .8rem;
+}
+
+#game_winner {
+  display: none;
+}
