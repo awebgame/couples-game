@@ -33,6 +33,7 @@ function initGame() {
   rounds = 0;
   count = 0;
   current_play = 0;
+
   
 
   if(document.getElementById('female_input').value != '' && document.getElementById('male_input').value != '' && (document.getElementById('rounds_input').value > 4 && document.getElementById('rounds_input').value < 21)) {
