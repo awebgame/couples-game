@@ -18,7 +18,7 @@ var token = "";
 
 var api_url = "https://oauth.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=50";
 
-f_tags = ["dildo", "blowjob", "finger", "footjob", "ass", "fuck+pussy", "69", "cowgirl", "boobs", "suck+cock", "spread"];
+f_tags = ["dildo", "blowjob", "finger", "footjob", "ass", "fuck+pussy", "69", "cowgirl", "boobs", "suck+cock", "spread", "tit+fuck"];
 m_tags = ["lick+pussy", "lick+ass", "spank+ass", "fuck+pussy", "69", "spank"];
 
 a_tags = ["anal"];
@@ -162,16 +162,24 @@ function applyGif(gif) {
   var elem = document.getElementById('current_gif');
   url = "";
   if(gif.domain == "gfycat.com") {
-    decoded = $('<div/>').html(gif["media_embed"].content).text();
-    elem.innerHTML = decoded;
+    if(gif["media_embed"].length == 0) {
+      loadGif();
+    } else {
+      decoded = $('<div/>').html(gif["media_embed"].content).text();
+      elem.innerHTML = decoded;
+    }
   }
   else if(gif.domain == "i.imgur.com") {
     url = gif.url.substr(0, gif.url.lastIndexOf(".")) + ".gif";
     elem.innerHTML = '<img src="' + url + '" />';
   } 
   else if(gif.domain == "imgur.com") {
-    decoded = $('<div/>').html(gif["media_embed"].content).text();
-    elem.innerHTML = decoded;
+    if(gif["media_embed"].length == 0) {
+      loadGif();
+    } else {
+      decoded = $('<div/>').html(gif["media_embed"].content).text();
+      elem.innerHTML = decoded;
+    }
   } else {
     url = gif.url;
     elem.innerHTML = '<img src="' + url + '" />';
