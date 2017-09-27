@@ -12,7 +12,7 @@
   <div id="game_start" class="vertical_align">
     <div class="container">
       <div class="columns">
-        <div class="column col-4 col-xs-10 col-mx-auto">
+        <div class="column col-5 col-md-10 col-xs-10 col-mx-auto">
           <div class="card">
             <div class="card-header">
               <div class="card-title h2">Game</div>
@@ -23,26 +23,12 @@
                 <input class="form-input" type="text" id="female_input" placeholder="Female name">
                 <label class="form-label" for="male_input">Male</label>
                 <input class="form-input" type="text" id="male_input" placeholder="Male name">
-                <label class="form-label" for="max_score">Max score</label>
-                <input class="form-input" type="number" value="5" id="max_score" placeholder="Max score">
-                <!-- <div id="game_options">
-                  <label class="form-switch">
-                    <input type="checkbox" id="t_option">
-                    <i class="form-icon"></i> T
-                  </label>
-                  <label class="form-switch">
-                    <input type="checkbox" id="a_option">
-                    <i class="form-icon"></i> A
-                  </label>
-                  <label class="form-switch">
-                    <input type="checkbox" id="b_option">
-                    <i class="form-icon"></i> B
-                  </label>
-                </div>-->
+                <label class="form-label" for="rounds_input">Rounds</label>
+                <input class="form-input" type="number" id="rounds_input" min="5" max="20" value="12" placeholder="Rounds (between 5 and 20)">
               </div>       
             </div>
             <div class="card-footer">
-              <button class="btn btn-primary bg-success c-hand" onclick="start_game()">START GAME</button>
+              <button class="btn btn-primary bg-success c-hand" onclick="initGame()">START GAME</button>
             </div>
           </div>
         </div>
@@ -55,25 +41,36 @@
       <div class="columns">
         <div class="column col-6 col-xs-10 col-mx-auto">
           <div class="card">
-            <div class="card-header">
-              <div class="card-title h3" id="player_name"></div>
-            </div>
+            <div class="card-header h3" id="round_info"></div>
             <div class="card-body">
               <center><div id="current_gif"></div></center>
             </div>
             <div class="card-footer">
-              <button class="btn btn-primary c-hand" onclick="update_score()">ACCEPT</button>
-              <button class="btn btn c-hand" onclick="load_next()">SKIP</button>
-              <button class="btn btn c-hand float-right" onclick="unavailable()">UNAVAILABLE</button>
-              <div id="current_score">
-                <div id="f_score"><span id="f_score_name"></span>: <span id="f_score_value">0</span></div>
-                <div id="m_score"><span id="m_score_name"></span>: <span id="m_score_value">0</span></div>
+              <div class="container">
+              <center>
+              <div class="columns">
+                <div class="column col-6">
+                  <div class="player_info h5"><span id="f_player_name"></span> <span id="f_player_score">0</span></div>
+                  <div>
+                    <button class="btn btn-primary c-hand" onclick="accept(0)">ACCEPT</button>
+                    <button class="btn btn c-hand" onclick="skip(0)">SKIP</button>
+                  </div>
+                </div>
+                <div class="column col-6">
+                  <div class="player_info h5"><span id="m_player_name"></span> <span id="m_player_score">0</span></div>
+                  <div>
+                    <button class="btn btn-primary c-hand" onclick="accept(1)">ACCEPT</button>
+                    <button class="btn btn c-hand" onclick="skip(1)">SKIP</button>
+                  </div>
+                </div>
               </div>
+              </center>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <div id="game_winner" class="vertical_align">
@@ -81,11 +78,11 @@
       <div class="columns">
         <div class="column col-4 col-xs-10 col-mx-auto">
           <div class="card">
-            <div class="card-header">
-              <div class="card-title h3">Game</div>
+            <div class="card-header h3">Game</div>
+            <div class="card-body text-center h4"><div id="player_winner"></div></div>
+            <div class="card-footer">
+              <center><button onclick="newGame()" class="btn btn-primary c-hand">NEW GAME</button></center>
             </div>
-            <div class="card-body text-center"><div id="player_winner"></div></div>
-            <div class="card-footer"></div>
           </div>
         </div>
       </div>
