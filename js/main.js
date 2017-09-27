@@ -36,6 +36,7 @@ function start_game() {
   guid = "";
 
   max = document.getElementById('max_score').value;
+  
 
   f_name = capitalizeFirstLetter(document.getElementById('female_input').value);
   m_name = capitalizeFirstLetter(document.getElementById('male_input').value);
