@@ -2,7 +2,7 @@ var apiKey = "6pxjCQsVyNXqE3GTbgzFglwsNayg85fwu6vvPA5kZ872jsMwmS";
 
 var tumblrEndpoint = "https://api.tumblr.com/v2/blog/best-hot-gifs.tumblr.com/";
 
-var hardcoreEndpoint = "https://api.tumblr.com/v2/blog/hardcoreteenpornsex.tumblr.com/";
+var foreplayEndpoint = "https://api.tumblr.com/v2/blog/webserrv33.tumblr.com/";
 
 var gifApi;
 
@@ -26,8 +26,6 @@ var count;
 var current_play;
 
 function initGame() {
-  console.log("Init");
-  console.log("Init");
   f_score = 0;
   m_score = 0;
   f_name = "";
@@ -48,12 +46,12 @@ function initGame() {
     document.getElementById('f_player_name').innerText = f_name;
     document.getElementById('m_player_name').innerText = m_name;
 
-    if(document.getElementById('hardcore_mode').checked) {
-      gifApi = hardcoreEndpoint + "posts/photo?api_key=" + apiKey;
-      infoApi = hardcoreEndpoint + "info" + "?api_key=" + apiKey; 
-    } else {
+    if(document.getElementById('sex_mode').checked) {
       gifApi = tumblrEndpoint + "posts/photo?api_key=" + apiKey;
-      infoApi = tumblrEndpoint + "info" + "?api_key=" + apiKey;
+      infoApi = tumblrEndpoint + "info" + "?api_key=" + apiKey; 
+    } else {
+      gifApi = foreplayEndpoint + "posts/photo?api_key=" + apiKey;
+      infoApi = foreplayEndpoint + "info" + "?api_key=" + apiKey;
     }
 
     $.ajax({
@@ -69,6 +67,7 @@ function initGame() {
           dataType: 'json',
           success: function(res) {
             gifs = res["response"]["posts"];
+            gifs = shuffle(gifs);
 
             document.getElementById('game_start').style.display = 'none';
 
@@ -180,3 +179,18 @@ function newGame() {
   document.getElementById('game_start').style.display = 'block';
 }
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  while (0 !== currentIndex) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
