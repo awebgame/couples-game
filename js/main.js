@@ -162,7 +162,7 @@ function applyGif(gif) {
   var elem = document.getElementById('current_gif');
   url = "";
   if(gif.domain == "gfycat.com") {
-    if(gif["media_embed"].length == 0) {
+    if($.isEmptyObject(gif["media_embed"].length)) {
       loadGif();
     } else {
       decoded = $('<div/>').html(gif["media_embed"].content).text();
@@ -177,7 +177,7 @@ function applyGif(gif) {
     elem.innerHTML = '<img src="' + url + '" />';
   } 
   else if(gif.domain == "imgur.com") {
-    if(gif["media_embed"].length == 0) {
+    if($.isEmptyObject(gif["media_embed"].length)) {
       loadGif();
     } else {
       decoded = $('<div/>').html(gif["media_embed"].content).text();
