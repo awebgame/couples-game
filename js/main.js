@@ -169,6 +169,9 @@ function applyGif(gif) {
       elem.innerHTML = decoded;
     }
   }
+  else if(gif.domain == "i.minus.com") {
+    loadGif();
+  }
   else if(gif.domain == "i.imgur.com") {
     url = gif.url.substr(0, gif.url.lastIndexOf(".")) + ".gif";
     elem.innerHTML = '<img src="' + url + '" />';
