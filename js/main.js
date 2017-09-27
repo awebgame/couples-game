@@ -1,6 +1,6 @@
 var apiKey = "6pxjCQsVyNXqE3GTbgzFglwsNayg85fwu6vvPA5kZ872jsMwmS";
 
-var tumblrEndpoint = "https://api.tumblr.com/v2/blog/best-hot-gifs.tumblr.com/";
+var tumblrEndpoint = "https://api.tumblr.com/v2/blog/gymofsex.tumblr.com/";
 
 var foreplayEndpoint = "https://api.tumblr.com/v2/blog/webserrv33.tumblr.com/";
 
