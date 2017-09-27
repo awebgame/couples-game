@@ -26,6 +26,7 @@ var count;
 var current_play;
 
 function initGame() {
+  console.log("Init");
   f_score = 0;
   m_score = 0;
   f_name = "";
@@ -34,7 +35,7 @@ function initGame() {
   count = 0;
   current_play = 0;
 
-  
+
 
   if(document.getElementById('female_input').value != '' && document.getElementById('male_input').value != '' && (document.getElementById('rounds_input').value > 4 && document.getElementById('rounds_input').value < 21)) {
     var totalPosts = 0;
