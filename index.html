@@ -23,7 +23,9 @@
                 <input class="form-input" type="text" id="female_input" placeholder="Female name">
                 <label class="form-label" for="male_input">Male</label>
                 <input class="form-input" type="text" id="male_input" placeholder="Male name">
-                <div id="game_options">
+                <label class="form-label" for="max_score">Max score</label>
+                <input class="form-input" type="number" id="max_score" placeholder="Max score">
+                <!-- <div id="game_options">
                   <label class="form-switch">
                     <input type="checkbox" id="t_option">
                     <i class="form-icon"></i> T
@@ -36,7 +38,7 @@
                     <input type="checkbox" id="b_option">
                     <i class="form-icon"></i> B
                   </label>
-                </div>
+                </div>-->
               </div>       
             </div>
             <div class="card-footer">
@@ -62,6 +64,7 @@
             <div class="card-footer">
               <button class="btn btn-primary c-hand" onclick="update_score()">ACCEPT</button>
               <button class="btn btn c-hand" onclick="load_next()">SKIP</button>
+              <button class="btn btn c-hand" onclick="unavailable()">UNAVAILABLE</button>
               <div id="current_score">
                 <div id="f_score"><span id="f_score_name"></span>: <span id="f_score_value">0</span></div>
                 <div id="m_score"><span id="m_score_name"></span>: <span id="m_score_value">0</span></div>

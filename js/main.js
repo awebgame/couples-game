@@ -35,6 +35,8 @@ function start_game() {
   current_player = 1;
   guid = "";
 
+  max = document.getElementById('max_score').value;
+
   f_name = capitalizeFirstLetter(document.getElementById('female_input').value);
   m_name = capitalizeFirstLetter(document.getElementById('male_input').value);
 
@@ -200,4 +202,8 @@ function end_game() {
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function unavailabile() {
+  load_gif();
 }
