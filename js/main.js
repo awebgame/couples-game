@@ -16,7 +16,7 @@ var b_option = 0;
 var guid = "";
 var token = "";
 
-var api_url = "https://oauth.reddit.com/r/nsfw_gifs/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=50";
+var api_url = "https://oauth.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=50";
 
 f_tags = ["dildo", "blowjob", "finger", "footjob", "ass", "69", "cowgirl", "boobs", "suck+cock", "spread", "tit+fuck", "doggy", "position", "anal", "couple"];
 m_tags = ["lick+pussy", "lick+ass", "doggy", "fuck+pussy", "69", "spank", "finger+ass", "position", "anal", "couple"];
