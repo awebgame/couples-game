@@ -1,0 +1,109 @@
+<html>
+  <head>
+    <title>Couples game</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+
+  <body>
+  <div id="game_start" class="vertical_align">
+    <div class="container grid-lg">
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title h2">Game</div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label" for="female_input">Female</label>
+                <input class="form-input" type="text" id="female_input" placeholder="Female name">
+                <label class="form-label" for="male_input">Male</label>
+                <input class="form-input" type="text" id="male_input" placeholder="Male name">
+                <label class="form-label" for="rounds_input">Rounds</label>
+                <input class="form-input" type="number" id="rounds_input" min="5" max="20" value="12" placeholder="Rounds (between 5 and 20)">
+                <div id="game_settings">
+                  <label class="form-switch">
+                    <input type="checkbox" id="hardcore_mode">
+                    <i class="form-icon"></i> Hardcore mode
+                  </label>
+                </div>
+              </div>       
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary bg-success c-hand" onclick="initGame()">START GAME</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="game_container" class="vertical_align">
+    <div class="container container-lg">
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <div class="card-header h3" id="round_info"></div>
+            <div class="card-body">
+              <center><div id="current_gif"></div></center>
+              <div class="container" id="current_button">
+              <div class="columns">
+                <div style="width:100%;padding-top:.4rem;">
+                  <center>
+                  You have both accepted.<br>
+                  <button class="btn btn-primary c-hand" onclick="doneGif()">DONE! NEXT ROUND</button>
+                  </center>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="card-footer">
+              <div class="container">
+              <center>
+              <div class="columns">
+                <div class="column col-6">
+                  <div class="player_info h5"><span id="f_player_name"></span> <span id="f_player_score">0</span></div>
+                  <div>
+                    <button class="btn btn-primary c-hand" onclick="accept(0)">ACCEPT</button>
+                    <button class="btn btn c-hand" onclick="skip(0)">SKIP</button>
+                  </div>
+                </div>
+                <div class="column col-6">
+                  <div class="player_info h5"><span id="m_player_name"></span> <span id="m_player_score">0</span></div>
+                  <div>
+                    <button class="btn btn-primary c-hand" onclick="accept(1)">ACCEPT</button>
+                    <button class="btn btn c-hand" onclick="skip(1)">SKIP</button>
+                  </div>
+                </div>
+              </div>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="game_winner" class="vertical_align">
+    <div class="container container-lg">
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <div class="card-header h3">Game</div>
+            <div class="card-body text-center h4"><div id="player_winner"></div></div>
+            <div class="card-footer">
+              <center><button onclick="newGame()" class="btn btn-primary c-hand">NEW GAME</button></center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
