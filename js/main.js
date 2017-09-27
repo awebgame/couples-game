@@ -84,8 +84,8 @@ function loadGif() {
   f_skip = 0;
   m_skip = 0;
 
-  if(count != rounds) {
-    document.getElementById('round_info').innerHTML = 'Round ' + count;
+  if(count < rounds) {
+    document.getElementById('round_info').innerHTML = 'Round ' + (count+1);
     document.getElementById('current_gif').innerHTML = '<img class="gif_img" src="' + gifs[count]["photos"][0]["original_size"].url + '" />';
     count++;
   } else {
