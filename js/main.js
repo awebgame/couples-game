@@ -27,6 +27,7 @@ var current_play;
 
 function initGame() {
   console.log("Init");
+  console.log("Init");
   f_score = 0;
   m_score = 0;
   f_name = "";
