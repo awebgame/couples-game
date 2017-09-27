@@ -23,6 +23,8 @@ var f_skip;
 var m_skip;
 var count;
 
+var current_play;
+
 function initGame() {
   f_score = 0;
   m_score = 0;
@@ -30,6 +32,7 @@ function initGame() {
   m_name = "";
   rounds = 0;
   count = 0;
+  current_play = 0;
 
   if(document.getElementById('female_input').value != '' && document.getElementById('male_input').value != '' && (document.getElementById('rounds_input').value > 4 && document.getElementById('rounds_input').value < 21)) {
     var totalPosts = 0;
@@ -94,21 +97,25 @@ function loadGif() {
 } 
 
 function accept(player) {
-  if(player == 0) {
-    f_accept = 1;
-  } else {
-    m_accept = 1;
+  if(current_play == 0) {
+    if(player == 0) {
+      f_accept = 1;
+    } else {
+      m_accept = 1;
+    }
+    checkStatus();
   }
-  checkStatus();
 }
 
 function skip(player) {
-  if(player == 0) {
-    f_skip = 1;
-  } else {
-    m_skip = 1;
-  }  
-  checkStatus();
+  if(current_play == 0) {
+    if(player == 0) {
+      f_skip = 1;
+    } else {
+      m_skip = 1;
+    }  
+    checkStatus();
+  }
 }
 
 function checkStatus() {
@@ -135,6 +142,7 @@ function checkStatus() {
     m_score = m_score + 1;
     f_score = f_score + 1;
     document.getElementById('current_button').style.display = 'block';
+    current_play = 1;
   }
   
   document.getElementById('f_player_score').innerText = f_score;
@@ -158,6 +166,7 @@ function endGame() {
 
 function doneGif() {
   document.getElementById('current_button').style.display = 'none';
+  current_play = 0;
   loadGif();
 }
 
