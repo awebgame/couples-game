@@ -162,14 +162,14 @@ function applyGif(gif) {
   url = "";
   if(gif.domain == "gfycat.com") {
     if($.isEmptyObject(gif.media_embed)) {
-      loadGif();
+      load_gif();
     } else {
       decoded = $('<div/>').html(gif["media_embed"].content).text();
       elem.innerHTML = decoded;
     }
   }
   else if(gif.domain == "i.minus.com") {
-    loadGif();
+    load_gif();
   }
   else if(gif.domain == "i.imgur.com") {
     url = gif.url.substr(0, gif.url.lastIndexOf(".")) + ".gif";
@@ -177,7 +177,7 @@ function applyGif(gif) {
   } 
   else if(gif.domain == "imgur.com") {
     if($.isEmptyObject(gif.media_embed)) {
-      loadGif();
+      load_gif();
     } else {
       decoded = $('<div/>').html(gif["media_embed"].content).text();
       elem.innerHTML = decoded;
