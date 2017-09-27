@@ -140,6 +140,8 @@ function load_gif() {
     url = api_url + "&q=" + current_tag;
   }
 
+  console.log(current_tag);
+
   $.ajax({
     type: "GET",
     url: url,
@@ -149,11 +151,8 @@ function load_gif() {
       "Authorization": "Bearer " + token
     },
     success: function(data){
-      console.log(data);
       n_random = Math.floor((Math.random() * data["data"]["children"].length));
-      console.log("Random: " + n_random);
       applyGif(data["data"]["children"][n_random]["data"]);
-      //document.getElementById('current_gif').innerHTML = '<img src="' + data["data"]["children"][n_random]["data"].url + '" />';
     }
   });
 }
