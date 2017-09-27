@@ -32,3 +32,7 @@ body {
 .player_info {
   padding-bottom: .4rem;
 }
+
+#current_button {
+  display: none;
+}

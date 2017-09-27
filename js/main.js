@@ -126,7 +126,7 @@ function checkStatus() {
   else if(f_accept && m_accept) {
     m_score = m_score + 1;
     f_score = f_score + 1;
-    loadGif();
+    document.getElementById('current_button').style.display = 'block';
   }
   
   document.getElementById('f_player_score').innerText = f_score;
@@ -146,6 +146,11 @@ function endGame() {
   else {
     document.getElementById('player_winner').innerHTML = 'Draw! Good job!';
   }  
+}
+
+function doneGif() {
+  document.getElementById('current_button').style.display = 'none';
+  loadGif();
 }
 
 function capitalizeFirstLetter(string) {
