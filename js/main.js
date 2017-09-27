@@ -36,7 +36,7 @@ function start_game() {
   guid = "";
 
   max = document.getElementById('max_score').value;
-  
+
 
   f_name = capitalizeFirstLetter(document.getElementById('female_input').value);
   m_name = capitalizeFirstLetter(document.getElementById('male_input').value);
@@ -60,7 +60,7 @@ function start_game() {
         token = data['access_token'];
       }
     });
-
+/*
     t_option = document.getElementById('t_option').checked;
     a_option = document.getElementById('a_option').checked;
     b_option = document.getElementById('b_option').checked;
@@ -68,7 +68,7 @@ function start_game() {
     if(a_option) {
       couple_tags.push(a_tags);
     }
-
+*/
 
     document.getElementById('game_start').style.display = 'none';
 
