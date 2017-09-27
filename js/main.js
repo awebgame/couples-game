@@ -163,3 +163,4 @@ function newGame() {
 
   document.getElementById('game_start').style.display = 'block';
 }
+
