@@ -112,7 +112,15 @@ function skip(player) {
 }
 
 function checkStatus() {
-  if(f_skip && m_accept) {
+  if(f_skip && !m_accept) {
+    m_score = m_score + 1;
+    loadGif();
+  } 
+  else if(m_skip && !f_accept) {
+    f_score = f_score + 1;
+    loadGif();
+  }
+  else if(f_skip && m_accept) {
     m_score = m_score + 1;
     loadGif();
   } 
