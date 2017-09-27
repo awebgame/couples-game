@@ -139,6 +139,7 @@ function load_gif() {
     current_tag = m_tags[m_random];
     url = api_url + "&q=" + current_tag;
   }
+  
 
   console.log(current_tag);
 
