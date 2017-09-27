@@ -2,9 +2,11 @@ var apiKey = "6pxjCQsVyNXqE3GTbgzFglwsNayg85fwu6vvPA5kZ872jsMwmS";
 
 var tumblrEndpoint = "https://api.tumblr.com/v2/blog/best-hot-gifs.tumblr.com/";
 
-var gifApi = tumblrEndpoint + "posts/photo?api_key=" + apiKey;
+var hardcoreEndpoint = "https://api.tumblr.com/v2/blog/hardcoreteenpornsex.tumblr.com/";
 
-var infoApi = tumblrEndpoint + "info" + "?api_key=" + apiKey;
+var gifApi;
+
+var infoApi;
 
 var gifs;
 
@@ -40,6 +42,14 @@ function initGame() {
 
     document.getElementById('f_player_name').innerText = f_name;
     document.getElementById('m_player_name').innerText = m_name;
+
+    if(document.getElementById('hardcore_mode').checked) {
+      gifApi = hardcoreEndpoint + "posts/photo?api_key=" + apiKey;
+      infoApi = hardcoreEndpoint + "info" + "?api_key=" + apiKey; 
+    } else {
+      gifApi = tumblrEndpoint + "posts/photo?api_key=" + apiKey;
+      infoApi = tumblrEndpoint + "info" + "?api_key=" + apiKey;
+    }
 
     $.ajax({
       url: infoApi,
