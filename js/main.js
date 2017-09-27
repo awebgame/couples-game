@@ -16,14 +16,12 @@ var b_option = 0;
 var guid = "";
 var token = "";
 
-var api_url = "https://oauth.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=20";
+var api_url = "https://oauth.reddit.com/r/NSFW_GIF/search.json?restrict_sr=on&include_over_18=on&sort=relevance&t=all&limit=50";
 
-f_tags = ["dildo", "blowjob", "finger", "footjob", "ass"];
-m_tags = ["masturbate", "lick+pussy", "lick+boobs", "lick+ass"];
+f_tags = ["dildo", "blowjob", "finger", "footjob", "ass", "fuck+pussy", "69", "cowgirl", "boobs", "suck+cock", "spread"];
+m_tags = ["masturbate", "lick+pussy", "lick+ass", "spank+ass", "fuck+pussy", "69", "spank"];
 
 a_tags = ["anal"];
-
-couple_tags = ["fuck+pussy", "69"];
 
 function guidGenerator() {
   var S4 = function() {
@@ -70,8 +68,6 @@ function start_game() {
       couple_tags.push(a_tags);
     }
 
-    f_tags.push(couple_tags);
-    m_tags.push(couple_tags);
 
     document.getElementById('game_start').style.display = 'none';
 
@@ -144,27 +140,38 @@ function load_gif() {
     url = api_url + "&q=" + current_tag;
   }
 
-  $.get(url, function (data) {
-    console.log(data);
-    console.log(data["data"]["children"]);
+  $.ajax({
+    type: "GET",
+    url: url,
+    dataType: 'json',
+    async: false,
+    headers: {
+      "Authorization": "Bearer " + token
+    },
+    success: function(data){
+      console.log(data);
+      n_random = Math.floor((Math.random() * data["data"]["children"].length));
+      console.log("Random: " + n_random);
+      applyGif(data["data"]["children"][n_random]["data"]);
+      //document.getElementById('current_gif').innerHTML = '<img src="' + data["data"]["children"][n_random]["data"].url + '" />';
+    }
   });
+}
 
-    $.ajax({
-      type: "GET",
-      url: url,
-      dataType: 'json',
-      async: false,
-      headers: {
-        "Authorization": "Bearer " + token
-      },
-      success: function(data){
-        console.log(data);
-      }
-    });
-
-    console.log("ok");
-
-
+function applyGif(gif) {
+  var elem = document.getElementById('current_gif');
+  url = "";
+  if(gif.domain == "gfycat.com") {
+    var decoded = $('<div/>').html(gif["media_embed"].content).text();
+    elem.innerHTML = decoded;
+  }
+  else if(gif.domain == "i.imgur.com") {
+    url = gif.url.substr(0, gif.url.lastIndexOf(".")) + ".gif";
+    elem.innerHTML = '<img src="' + url + '" />';
+  } else {
+    url = gif.url;
+    elem.innerHTML = '<img src="' + url + '" />';
+  }
 }
 
 function end_game() {
